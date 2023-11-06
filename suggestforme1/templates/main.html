@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+  <head>
+    <title>Suggestforme</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  </head>
+
+  <body>
+    <div>Suggest for me</div>
+    {% include 'navbar.html' %}
+    {% block content %}
+    {% endblock %}
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

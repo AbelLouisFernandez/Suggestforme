@@ -1,0 +1,14 @@
+<div>
+  {% if request.user.is_authenticated %}
+  <div class="user-profile">
+    <img src="{{request.user.avatar.url}}" alt="Profile Picture" class="profile-picture">
+    <span class="username">{{request.user}}</span>
+  </div>
+  
+  <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
+  <hr>
+  {% else %}
+  <button class='log-button' data-href="{% url 'login' %}">Please Login for Full functionality of website</button>
+  <hr>
+  {% endif %}
+</div>

@@ -1,0 +1,6 @@
+.profile-picture {
+  width: 40px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 10px; /* Add some spacing between the image and username */
+}
