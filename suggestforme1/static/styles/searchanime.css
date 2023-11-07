@@ -1,0 +1,34 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.anime-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.anime-box .anime-banner {
+  width: 100%; /* Set the desired width for your product images */
+  max-height: 200px; /* Set the desired height for your product images */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+

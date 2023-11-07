@@ -24,3 +24,4 @@ redirectButtons.forEach(function(button) {
         window.location.href = targetUrl;
     });
 });
+

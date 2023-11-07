@@ -4,11 +4,29 @@
     <img src="{{request.user.avatar.url}}" alt="Profile Picture" class="profile-picture">
     <span class="username">{{request.user}}</span>
   </div>
-  
-  <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
-  <hr>
-  {% else %}
-  <button class='log-button' data-href="{% url 'login' %}">Please Login for Full functionality of website</button>
-  <hr>
+  <div>
+    <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
+    <hr>
+    {% else %}
+    <button class='log-button' data-href="{% url 'login' %}">Please Login for Full functionality of website</button>
+    <hr>
+  </div>
   {% endif %}
+  <div>
+    <button class="filterbutton" id="name">Name</button>
+    <button class="filterbutton" id="genre">Genre</button>
+    <button class="filterbutton" id="year">Aired on</button>
+    <button class="filterbutton" id="format">Format</button>
+    <button class="filterbutton" id="status">Status</button>
+  
+    <form method="POST" action="{% url 'searchanime' %}">
+      {% csrf_token %}
+      <input type="hidden" name="cat" value="" id="cat-input">  
+      <input type="text" name="q" placeholder="Search anime" />
+      <button type="submit">Submit</button>
+    </form>
+    
+    <script src="/static/js/searchanime.js" >  </script>
+    </body>
+  </div>
 </div>

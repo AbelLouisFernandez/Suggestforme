@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'styles/searchanime.css' %}">
+</head>
+<body>
+  {% for anime in animes %}
+    <section class="anime-box">
+      <img class="anime-banner" src="/images/{{ anime.banner }}" alt="{{ anime.name }} Banner">
+      <a href="{% url 'animepage' anime.name %}">{{anime.name}}</a>
+  </section> 
+  {% endfor %}
+
+</body>
+</html>
+
+{% endblock content %}

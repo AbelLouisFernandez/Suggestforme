@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from  .forms import SignUpForm
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -13,13 +14,20 @@ def home(request):
 
 def suggestpage(request):
    return render(request,'base/home.html')
-def mark_movie_viewed(request, movie_id):
-    anime = get_object_or_404(anime, pk=movie_id)
+def animewatched(request, pk):
+    animeobject = get_object_or_404(anime,name=pk)
     user = request.user
-    user_view, created = userwatchedstatus.objects.get_or_create(user=user, anime=anime)
+    user_view, created = userwatchedstatus.objects.get_or_create(user=user, anime=animeobject)
     user_view.viewed = True
     user_view.save()
-    return redirect('movie_detail', movie_id=movie_id)
+    return redirect('animepage',pk=pk)
+
+def animenotwatched(request, pk):
+    animeobject = get_object_or_404(anime,name=pk)
+    user = request.user
+    user_view, created = userwatchedstatus.objects.get_or_create(user=user, anime=animeobject)
+    user_view.delete()
+    return redirect('animepage',pk=pk)
 
 
 
@@ -69,3 +77,43 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+from django.db.models import Q
+
+def searchanime(request):
+    cat = request.POST.get('cat')
+    q = request.POST.get('q') if request.POST.get('q') else ''
+
+    if cat == 'name':
+        animes = anime.objects.filter(name__icontains=q)
+    elif cat == 'genres':
+        animes = anime.objects.filter(genres__icontains=q)
+    elif cat == 'year':
+        animes = anime.objects.filter(year__icontains=q)
+    elif cat == 'format':
+        animes = anime.objects.filter(format__icontains=q)
+    elif cat == 'status':
+        animes = anime.objects.filter(status__icontains=q)
+    else:
+        animes = anime.objects.filter(
+            Q(name__icontains=q) |
+            Q(genres__icontains=q) |
+            Q(year__icontains=q) |
+            Q(format__icontains=q)
+        )
+
+    watchedanimesobjects = userwatchedstatus.objects.filter(user=request.user)
+    watchedanime = []
+
+    for object in watchedanimesobjects:
+        watchedanime.append(object.anime.name)
+
+    animes = [anime for anime in animes if anime.name not in watchedanime]
+
+    context = {'animes': animes, 'cat': cat}
+    return render(request, 'base/searchanime.html', context)
+
+def animepage(request, pk):
+    animeobject= get_object_or_404(anime, name=pk)
+    context = {'animeobject':animeobject}
+    return render(request, 'base/animepage.html', context)

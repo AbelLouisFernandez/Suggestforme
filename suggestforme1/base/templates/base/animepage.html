@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content  %}
+<p>{{animeobject.name}}</p>
+<p>{{animeobject.year}}</p>
+<p>{{animeobject.description}}</p>
+<p>Have you watched this</p>
+<button class="watchedornot watched-button" data-href="{% url 'animewatched' animeobject.name %}">Watched</button>
+<p>Not watched</p>
+<button class="watchedornot not-watched-button" data-href="{% url 'animenotwatched' animeobject.name %}">Not Watched</button>
+
+<script>
+  var watchedButtons = document.querySelectorAll('.watched-button');
+  var notWatchedButtons = document.querySelectorAll('.not-watched-button');
+
+  watchedButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var redirectURL = button.getAttribute("data-href");
+      window.location.href = redirectURL;
+    });
+  });
+
+  notWatchedButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var redirectURL = button.getAttribute("data-href");
+      window.location.href = redirectURL;
+    });
+  });
+</script>
+
+{% endblock content %}
