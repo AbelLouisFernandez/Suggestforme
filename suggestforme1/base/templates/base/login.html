@@ -16,6 +16,7 @@
       <input type="submit" value="Login" />
   </form>
 {% endif %}
+<a href="{% url 'password_reset' %}">Forgot Password?</a>
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}

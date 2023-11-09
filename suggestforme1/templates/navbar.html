@@ -1,8 +1,13 @@
+{% load static %}
 <div>
+  <div style="text-align: center;" >
+    <a href="{% url 'home' %}"><p>Suggestforme</p></a>
+   </div>
+  <div>
   {% if request.user.is_authenticated %}
   <div class="user-profile">
     <img src="{{request.user.avatar.url}}" alt="Profile Picture" class="profile-picture">
-    <span class="username">{{request.user}}</span>
+    <a href="{% url 'profile' %}"><span class="username">{{request.user}}</span></a>
   </div>
   <div>
     <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
@@ -12,21 +17,23 @@
     <hr>
   </div>
   {% endif %}
-  <div>
+  <div class="centered-container">
     <button class="filterbutton" id="name">Name</button>
     <button class="filterbutton" id="genre">Genre</button>
     <button class="filterbutton" id="year">Aired on</button>
     <button class="filterbutton" id="format">Format</button>
     <button class="filterbutton" id="status">Status</button>
-  
-    <form method="POST" action="{% url 'searchanime' %}">
+     
+    <div>
+    <form method="POST" action="{% url 'searchanime' %}" class="search-form">
       {% csrf_token %}
       <input type="hidden" name="cat" value="" id="cat-input">  
       <input type="text" name="q" placeholder="Search anime" />
       <button type="submit">Submit</button>
     </form>
-    
-    <script src="/static/js/searchanime.js" >  </script>
-    </body>
+    </div>
+  
+    <script src="/static/js/searchanime.js"></script>
   </div>
+  
 </div>

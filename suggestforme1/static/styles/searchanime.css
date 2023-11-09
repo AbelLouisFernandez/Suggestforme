@@ -1,34 +1,66 @@
-/* Reset default browser styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-main {
+.anime-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  flex-direction: row; /* Items will be displayed horizontally */
+  flex-wrap: wrap; /* Wrap items to a new row when there's not enough space */
+  justify-content: flex-start; /* Adjust as needed for horizontal alignment */
+  gap: 20px; /* Space between items */
 }
 
 .anime-box {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 20px;
-  text-align: center;
-  width: 300px;
+  text-align: center; /* Center content within each box */
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
-.anime-box .anime-banner {
-  width: 100%; /* Set the desired width for your product images */
-  max-height: 200px; /* Set the desired height for your product images */
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name-container {
+  padding: 10px;
+  white-space: normal;
+}
+
+.anime-banner {
+  width: 200px; /* Set the desired width for your product images */
+  height: auto; /* Automatically adjust the height based on the image's aspect ratio */
+  max-width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.anime-box a {
+  font-size: 1rem;
+  margin: 0;
+  text-decoration: none;
+}
+
+.anime-box:hover {
+  transform: scale(1.05);
 }
 
 
+.filterbutton {
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.filterbutton:hover{
+  transform: scale(1.05);
+
+}
+.clicked {
+  background-color: green;
+}

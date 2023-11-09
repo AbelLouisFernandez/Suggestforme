@@ -6,11 +6,10 @@ from django import forms
 
 class SignUpForm(UserCreationForm):
     email = forms.CharField(required=True,help_text='Required.Enter a valid email.')
-    phone = forms.CharField(required=True,help_text='Required. Enter a valid phone.')
     avatar = forms.ImageField(required=False)
     class Meta:
         model = CustomUser
-        fields = ('username','password1', 'password2',)
+        fields = ('username','password1', 'password2','email')
 
 class animeform(ModelForm):
     class Meta:

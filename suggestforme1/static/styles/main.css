@@ -4,6 +4,7 @@
   border-radius: 50%; /* Make the image circular */
   margin-right: 10px; /* Add some spacing between the image and username */
 }
-.center-text {
-  text-align: center;
+.logo {
+  width: 100px;
+  height: 100px;
 }

@@ -1,13 +1,20 @@
 {% extends 'main.html' %}
 {% block content  %}
 <p>{{animeobject.name}}</p>
-<p>{{animeobject.year}}</p>
+<p>Released on:{{animeobject.startyear}}</p>
+{% if animeobject.endyear != None %}
+<p>Finished on:{{animeobject.endyear}}</p>
+{% else %}
+<p>Finished on:Ongoing</p>
+{% endif %}
 <p>{{animeobject.description}}</p>
+<a href="{{animeobject.trailerlink}}">Trailer</a>
+{% if request.user.is_authenticated %}
 <p>Have you watched this</p>
 <button class="watchedornot watched-button" data-href="{% url 'animewatched' animeobject.name %}">Watched</button>
 <p>Not watched</p>
 <button class="watchedornot not-watched-button" data-href="{% url 'animenotwatched' animeobject.name %}">Not Watched</button>
-
+{% endif %}
 <script>
   var watchedButtons = document.querySelectorAll('.watched-button');
   var notWatchedButtons = document.querySelectorAll('.not-watched-button');

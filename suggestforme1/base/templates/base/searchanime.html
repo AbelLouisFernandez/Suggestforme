@@ -5,14 +5,24 @@
   <link rel="stylesheet" href="{% static 'styles/searchanime.css' %}">
 </head>
 <body>
-  {% for anime in animes %}
-    <section class="anime-box">
-      <img class="anime-banner" src="/images/{{ anime.banner }}" alt="{{ anime.name }} Banner">
-      <a href="{% url 'animepage' anime.name %}">{{anime.name}}</a>
-  </section> 
-  {% endfor %}
-
+  <div>
+    <section class="anime-container">
+      {% for anime in animes %}
+      <a href="{% url 'animepage' anime.name %}">
+        <div class="anime-box">
+          <div class="image-container">
+            <img class="anime-banner" src="/images/{{ anime.banner }}" alt="{{ anime.name }} Banner">
+          </div>
+          <div class="name-container">
+            <p>{{ anime.name }}</p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </section>
+  </div>  
 </body>
+
 </html>
 
 {% endblock content %}

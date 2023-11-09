@@ -1,10 +1,30 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
 <head>
-  <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/searchanime.css">
+  <link rel="stylesheet" href="{% static 'styles/searchanime.css' %}">
 
 </head>
 <body>
   <h3>Welcome to Suggestforme</h3>
+  <div>
+    <section class="anime-container">
+      {% for anime in animes %}
+      <a href="{% url 'animepage' anime.name %}">
+        <div class="anime-box">
+          <div class="image-container">
+            <img class="anime-banner" src="/images/{{ anime.banner }}" alt="{{ anime.name }} Banner">
+          </div>
+          <div class="name-container">
+            <p>{{ anime.name }}</p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </section>
+  </div>  
+  
+
+  
 </body>
 {% endblock content %}

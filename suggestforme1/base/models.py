@@ -20,8 +20,10 @@ class anime(models.Model):
   genres=models.CharField(max_length=100,null=True,blank=True)
   banner=models.ImageField(null=True,blank=True)
   format=models.CharField(max_length=100,null=True,blank=True)
-  year=models.IntegerField(null=True,blank=True)
+  startyear=models.DateField(null=True,blank=True)
+  endyear=models.DateField(null=True,blank=True)
   trailerlink=models.CharField(max_length=10000,null=True,blank=True)
+  studio=models.CharField(max_length=1000,null=True,blank=True)
   def __str__(self):
     return self.name
 
