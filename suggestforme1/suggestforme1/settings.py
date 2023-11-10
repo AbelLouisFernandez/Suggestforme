@@ -93,7 +93,7 @@ DATABASES = {
         'HOST': os.getenv('MYSQLHOST'),  
         'PORT': os.getenv('MYSQLPORT'),  
         'OPTIONS': {
-            'charset': 'utf8mb4',
+            'charset': 'utf8',
         },    
     }
 }
