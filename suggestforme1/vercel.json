@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "suggestforme1/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "suggestforme1/wsgi.py"
+    }
+  ]
+}
