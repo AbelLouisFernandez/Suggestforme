@@ -27,9 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a46c440w0ju5fy5+c%t6^5k@b5#wh2xdq%eti3uwr28pmg^q!o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','divine-pond-16710.pktriot.net']
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -85,13 +87,13 @@ AUTH_USER_MODEL = 'base.CustomUser'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'URL':os.getenv('MYSQL_URL'),
         'NAME': os.getenv('MYSQLDATABASE'),
         'USER': os.getenv('MYSQLUSER'),
         'PASSWORD': os.getenv('MYSQLPASSWORD'),
         'HOST': os.getenv('MYSQLHOST'),  
-        'PORT': os.getenv('MYSQLPORT'),    
+        'PORT': os.getenv('MYSQLPORT'),      
     }
 }
 
@@ -130,9 +132,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -143,8 +146,6 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CSRF_TRUSTED_ORIGINS=['https://suggestforme-git-main-abellouisfernandezs-projects.vercel.app/']
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
