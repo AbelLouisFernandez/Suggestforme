@@ -4,7 +4,41 @@
   border-radius: 50%; /* Make the image circular */
   margin-right: 10px; /* Add some spacing between the image and username */
 }
-.logo {
-  width: 100px;
-  height: 100px;
+
+.centered-container {
+  text-align: center;
 }
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for each dropdown */
+.search-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Style for the search input */
+.search-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Style for the submit button */
+.search-form button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add additional styling as needed */

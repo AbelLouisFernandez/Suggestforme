@@ -1,39 +1,45 @@
 {% load static %}
-<div>
-  <div style="text-align: center;" >
-    <a href="{% url 'home' %}"><p>Suggestforme</p></a>
-   </div>
+<head>
+ <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
   <div>
-  {% if request.user.is_authenticated %}
-  <div class="user-profile">
-    <img src="{{request.user.avatar.url}}" alt="Profile Picture" class="profile-picture">
-    <a href="{% url 'profile' %}"><span class="username">{{request.user}}</span></a>
-  </div>
-  <div>
-    <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
-    <hr>
-    {% else %}
-    <button class='log-button' data-href="{% url 'login' %}">Please Login for Full functionality of website</button>
-    <hr>
-  </div>
-  {% endif %}
-  <div class="centered-container">
-    <button class="filterbutton" id="name">Name</button>
-    <button class="filterbutton" id="genre">Genre</button>
-    <button class="filterbutton" id="year">Aired on</button>
-    <button class="filterbutton" id="format">Format</button>
-    <button class="filterbutton" id="status">Status</button>
-     
+    <div style="text-align: center;" >
+      <a href="{% url 'home' %}"><p>Suggestforme</p></a>
+     </div>
     <div>
-    <form method="POST" action="{% url 'searchanime' %}" class="search-form">
-      {% csrf_token %}
-      <input type="hidden" name="cat" value="" id="cat-input">  
-      <input type="text" name="q" placeholder="Search anime" />
-      <button type="submit">Submit</button>
-    </form>
+    {% if request.user.is_authenticated %}
+    <div class="user-profile">
+      <img src="{{request.user.avatar.url}}" alt="Profile Picture" class="profile-picture">
+      <a href="{% url 'profile' %}"><span class="username">{{request.user}}</span></a>
     </div>
-  
-    <script src="/static/js/searchanime.js"></script>
+    <div>
+      <button class='log-button' data-href="{% url 'logout' %}">Logout</button>
+      <hr>
+      {% else %}
+      <button class='log-button' data-href="{% url 'login' %}">Please Login for Full functionality of website</button>
+      <hr>
+    </div>
+    {% endif %}
+    <div class="centered-container">
+      <form method="POST" action="{% url 'searchanime' %}" class="search-form">
+        {% csrf_token %}
+    
+        <!-- Dropdown for Category -->
+        <select name="cat" id="cat-input">
+          <option value="">Select filter by</option>
+          <option value="genres">Genre</option>
+          <option value="startyear">Aired on</option>
+          <option value="format">Format</option>
+          <option value="status">Status</option>
+        </select>
+    
+        <input type="text" name="q" placeholder="Search anime" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+      <script src="/static/js/searchanime.js"></script>
+    </div>
+    
   </div>
-  
-</div>
+</body>
