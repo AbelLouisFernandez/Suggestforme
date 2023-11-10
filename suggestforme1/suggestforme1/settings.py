@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-a46c440w0ju5fy5+c%t6^5k@b5#wh2xdq%eti3uwr28pmg^q!o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','https://suggestforme-c5d12zlt7-abellouisfernandezs-projects.vercel.app/']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','https://suggestforme-git-main-abellouisfernandezs-projects.vercel.app/']
 
 
 # Application definition
@@ -147,7 +147,7 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS=["https://suggestforme-c5d12zlt7-abellouisfernandezs-projects.vercel.app/"]
+CSRF_TRUSTED_ORIGINS=['https://suggestforme-git-main-abellouisfernandezs-projects.vercel.app/']
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
