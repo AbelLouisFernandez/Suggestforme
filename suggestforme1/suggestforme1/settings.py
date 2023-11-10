@@ -29,9 +29,7 @@ SECRET_KEY = 'django-insecure-a46c440w0ju5fy5+c%t6^5k@b5#wh2xdq%eti3uwr28pmg^q!o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','https://suggestforme-git-main-abellouisfernandezs-projects.vercel.app/']
-
-
+ALLOWED_HOSTS = ['127.0.0.1','localhost','.vercel.app', '.now.sh']
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
