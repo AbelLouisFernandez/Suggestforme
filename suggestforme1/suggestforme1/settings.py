@@ -85,7 +85,7 @@ AUTH_USER_MODEL = 'base.CustomUser'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'URL':os.getenv('MYSQL_URL'),
         'NAME': os.getenv('MYSQLDATABASE'),
         'USER': os.getenv('MYSQLUSER'),
